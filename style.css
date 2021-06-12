@@ -74,7 +74,7 @@ form button:hover {
     border: none;
     padding: 1rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1rem;    
 }
 
 .complete-btn {
@@ -128,4 +128,32 @@ select {
 .select:hover::after {
     background: white;
     color: #d88771;
+}
+
+.filter {
+    margin-left: 1rem;
+}
+
+.filterAll, .filterCom, .filterUncom {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0.1rem 1.5rem;
+    margin: 0.1rem;
+    background: linear-gradient(135deg,#62b8f1, #b59aff);
+    border-radius: 0px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter .isActive {
+    box-sizing: border-box;
+    background: linear-gradient(135deg,#6283f1, #e29aff);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.filter :not(isActive) {
+    transform: scale(.85);
+    opacity: .75;
 }

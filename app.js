@@ -2,13 +2,21 @@
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
+const filterOption = document.querySelector('.filter-todo');
+const filterAll = document.querySelector('.filterAll');
+const filterCom = document.querySelector('.filterCom');
+const filterUncom = document.querySelector('.filterUncom');
 
 //event listeners
 todoButton.addEventListener('click', addTodo);
-todoList.addEventListener('click', deleteCheck); 
+todoList.addEventListener('click', buttonCheck);
+filterAll.addEventListener('click', filterA);
+filterCom.addEventListener('click', filterB);
+filterUncom.addEventListener('click', filterC);
+ 
 //functions
 function addTodo (event) { 
-    //prevent from submitting
+    //prevent from submitting and refreshing
     event.preventDefault();
 
     //Todo div
@@ -40,7 +48,7 @@ function addTodo (event) {
     todoInput.value = '';
 }
 
-function deleteCheck(e){
+function buttonCheck(e){
     const item = e.target;
 
     //if target clicked is delete button
@@ -59,4 +67,54 @@ function deleteCheck(e){
         const todo = item.parentElement;
         todo.classList.toggle("completed");
     }
+}
+
+function filterA (event) {
+    filterAll.classList.add('isActive');
+    filterCom.classList.remove('isActive');
+    filterUncom.classList.remove('isActive');
+
+    const todos = todoList.childNodes;
+
+    // console.log(todos);
+    todos.forEach(function(todo)
+    {
+        console.log(todo);
+        todo.style.display = "flex";
+    });
+}
+
+
+function filterB (event) {
+    filterAll.classList.remove('isActive');
+    filterCom.classList.add('isActive');
+    filterUncom.classList.remove('isActive');
+
+    const todos = todoList.childNodes;
+
+    todos.forEach(function(todo){
+        if (todo.classList.contains("completed")) 
+        {
+            todo.style.display = "flex";
+        }
+
+        else {todo.style.display = "none";}
+    })
+}
+
+function filterC (event) {
+    filterAll.classList.remove('isActive');
+    filterCom.classList.remove('isActive');
+    filterUncom.classList.add('isActive');
+
+    const todos = todoList.childNodes;
+
+    todos.forEach(function(todo){
+        if (todo.classList.contains("completed")) 
+        {
+            todo.style.display = "none";
+        }
+
+        else {todo.style.display = "flex";}
+    })
 }
