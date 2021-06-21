@@ -1,3 +1,5 @@
+// Project from online tutorial by YT user Dev Ed
+
 //selectors
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
